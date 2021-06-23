@@ -3,19 +3,23 @@ class UserAuthenticator
 
   attr_reader :user, :access_token
 
-  def initialize(code) end
+  def initialize(code)
+    @code = code
+  end
 
   def perform
+    if code.blank?
+      raise AuthenticationError
+    end
     if token.try(:error).present?
       raise AuthenticationError
-    else
-      prepare_user
-      @access_token = if user.access_token.present?
-                        user.access_token
-                      else
-                        user.create_access_token
-                      end
     end
+    prepare_user
+    @access_token = if user.access_token.present?
+                      user.access_token
+                    else
+                      user.create_access_token
+                    end
   end
 
   private
