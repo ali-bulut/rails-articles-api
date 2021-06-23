@@ -24,6 +24,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jsonapi-serializer'
 gem 'jsom-pagination'
 gem 'jsonapi_errors_handler'
+gem "octokit", "~> 4.0"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
